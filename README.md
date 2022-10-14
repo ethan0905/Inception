@@ -15,5 +15,5 @@
 #### To run a specific image with bash:  
 `docker run -it test-container-image bash`
 
-####SSL self certificate command
+#### SSL self certificate command  
 https://mpolinowski.github.io/docs/DevOps/NGINX/2020-08-27--nginx-docker-ssl-certs-self-signed/2020-08-27/
