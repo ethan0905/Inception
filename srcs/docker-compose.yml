@@ -21,3 +21,46 @@ services:
         # waiting for requests to arrive).
     ports:
       - "443:443"
+
+  wordpress:
+    container_name: wordpress
+    build: ./requirements/wordpress
+    env_file: .env
+    # we mount the volume named wordpress on the mount point /var/www/html/wordpress,
+        # created by the WordPress image.
+        # Using a named volume in this way will allow us to share our application code with other containers
+    volumes:
+      - wp:/var/www/html/wordpress
+        # we add the wordpress container to the project network
+    networks:
+      - project
+    # this option ensures that our containers will start in dependency order,
+      # and the wordpress container starts after the mariadb container.
+      # Our WordPress application depends on having an application database and a user,
+      # so setting dependencies in this order will allow the application to run correctly
+      #    depends_on:
+      #- mariadb
+
+# Our top-level key volumes defines the db and wp volumes.
+# When Docker creates volumes, the contents of the volume are stored in a directory on the host's filesystem,
+# /var/lib/docker/volumes/ and this process is managed by Docker.
+# After that, the contents of each volume are mounted from this directory to any container using the volume.
+# This way we can share code and data between containers
+volumes:
+  wp:
+    name: wp
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/${USER}/data/wp
+
+# A user-created project bridge system allows us to organize communication between our containers,
+# because they are on the same Docker daemon host.
+# This allows you to organize traffic and communications within the application,
+# because it opens all ports between containers on the same bridged network, hiding all ports from the outside world.
+# This way our mariadb, wordpress and nginx containers can interact with each other,
+# and we will only need to open port 440 for external access to the application
+networks:
+  project:
+    driver: bridge
