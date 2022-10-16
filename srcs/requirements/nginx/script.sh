@@ -40,4 +40,5 @@ if [ ! -f /etc/ssl/certs/nginx.crt ]; then
 	echo "nginx: ssl has finished setting up!";
 fi
 
+# Nginx uses the daemon off directive to run in the foreground
 nginx -g 'daemon off;';
