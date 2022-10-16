@@ -10,10 +10,15 @@
 #                                                                              #
 # **************************************************************************** #
 
-FROM	debian:10
-#		alias for debian:bullseye image version
-RUN		apt-get update && apt-get install -y nginx openssl
+#Define from which image vm gonna be built
+FROM	debian:buster
 
-WORKDIR	.
+#Install nginx and openssl
+RUN	apt-get update && apt-get install -y nginx openssl
 
 EXPOSE	443
+
+COPY	./conf/default /etc/nginx/site-enabled/default
+COPY	./tool/start.sh /var/www
+
+CMD	bash /var/www/start.sh
