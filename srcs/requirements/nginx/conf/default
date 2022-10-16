@@ -3,14 +3,13 @@ server {
     listen 443 ssl;
     listen [::]:443 ssl;
 
-
 	# this element defines your server name and server block,
 	# which should be used for requests to your server
     server_name esafar.42.fr;
 
     ssl_certificate_key /etc/ssl/private/nginx.key;
     ssl_certificate /etc/ssl/certs/nginx.crt;
-    ssl_protocols TLSv1.3;
+    ssl_protocols TLSv1.2 TLSv1.3;
    
 	# the index directive defines files,
 	# which will be used as indexes when processing requests to your server

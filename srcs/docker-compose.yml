@@ -1,0 +1,15 @@
+version: '3.9'
+
+service:
+  nginx:
+    container_name: 'nginx'
+    build: './requirements/nginx'
+    hostname: localhost
+    volume:
+      - wp:/var/www/html/wordpress
+    network:
+      - project
+    depend on:
+      - wordpress
+    port:
+      - "443:443"
