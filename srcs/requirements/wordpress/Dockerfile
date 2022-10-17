@@ -20,6 +20,6 @@ EXPOSE	9000
 
 COPY	./conf/www.conf /etc/php/7.3/fpm/pool.d
 COPY	./conf/index.html /var/www/index.html
-COPY	./script /var/www
+COPY	./tools /var/www
 
 CMD	bash /var/www/script.sh

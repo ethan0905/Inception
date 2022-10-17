@@ -2,8 +2,8 @@ version: '3.9'
 
 services:
   nginx:
-    container_name: 'nginx'
-    build: './requirements/nginx'
+    container_name: nginx
+    build: ./requirements/nginx
     hostname: localhost
     volumes:
       - wp:/var/www/html/wordpress
@@ -38,8 +38,32 @@ services:
       # and the wordpress container starts after the mariadb container.
       # Our WordPress application depends on having an application database and a user,
       # so setting dependencies in this order will allow the application to run correctly
-      #    depends_on:
-      #- mariadb
+    depends_on:
+      - mariadb
+
+  mariadb:
+    # this element specifies the name of the container
+    container_name: mariadb
+      # The "build" keyword allows you to specify
+        # path to the Dockerfile to use to build the image,
+        # which will start the service.
+        # Here './requirements/mariadb' corresponds to the path to the mariadb folder,
+        # which contains the corresponding Dockerfile
+    build: ./requirements/mariadb
+      # this parameter defines the container restart policy
+    restart: always
+      # this option tells Compose that we want to add environment variables from a file called .env,
+        # located in the assembly context.
+        # In this case, our current directory is used as the build context
+    env_file: .env
+      # here we mount a named volume called db to the /var/lib/mysql directory in the container.
+        # This is the default data directory on most distributions.
+    volumes:
+      - db:/var/lib/mysql
+      # this parameter specifies that the application service will connect to the project network,
+        # which we define at the bottom of the file
+    networks:
+      - project
 
 # Our top-level key volumes defines the db and wp volumes.
 # When Docker creates volumes, the contents of the volume are stored in a directory on the host's filesystem,
@@ -54,6 +78,13 @@ volumes:
       type: none
       o: bind
       device: /home/${USER}/data/wp
+  db:
+    name: db
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /home/${USER}/data/db
 
 # A user-created project bridge system allows us to organize communication between our containers,
 # because they are on the same Docker daemon host.

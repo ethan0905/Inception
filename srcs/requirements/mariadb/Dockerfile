@@ -14,11 +14,13 @@
 FROM	debian:buster
 
 #Install nginx and openssl
-RUN	apt-get update && apt-get install -y nginx openssl
+RUN	apt-get update && apt-get install -y mariadb-server
 
-EXPOSE	443
+EXPOSE	3306
 
-COPY	./conf/default /etc/nginx/site-enabled/default
-COPY	./tools/script.sh /var/www
+COPY	./conf/50-server.cnf /etc/mysql/mariadb.conf.d/
+COPY	./tools /var/www
 
-CMD	bash /var/www/script.sh
+RUN	service mysql start && mysql < /var/www/createdb.sql && rm -f /var/www/createdb.sql 
+
+CMD	/usr/bin/mysqld_safe
