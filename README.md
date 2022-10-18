@@ -20,3 +20,4 @@ https://mpolinowski.github.io/docs/DevOps/NGINX/2020-08-27--nginx-docker-ssl-cer
 
 #### Add root privileges to user  
 https://phoenixnap.com/kb/create-a-sudo-user-on-debianhttps://phoenixnap.com/kb/create-a-sudo-user-on-debian  
+https://paparava.wordpress.com/2020/12/18/debian-10-adduser-command-not-found-on-debian/  
