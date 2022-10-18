@@ -20,7 +20,6 @@ server {
 	# These Dockerfile instructions also ensure that WordPress release files are mounted to this volume
     index index.php index.html index.htm;
     
-
     root /var/www/html/wordpress;
 
 	# in this location block we will use the try_files directive to check for files

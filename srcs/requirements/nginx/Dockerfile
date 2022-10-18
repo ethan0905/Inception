@@ -18,7 +18,7 @@ RUN	apt-get update && apt-get install -y nginx openssl
 
 EXPOSE	443
 
-COPY	./conf/default /etc/nginx/site-enabled/default
+COPY	./conf/default /etc/nginx/sites-enabled/default
 COPY	./tools/script.sh /var/www
 
 CMD	bash /var/www/script.sh

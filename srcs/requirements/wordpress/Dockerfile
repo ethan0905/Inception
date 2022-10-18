@@ -19,7 +19,7 @@ RUN	apt-get update && apt-get install -y php7.3 php-mysqli php-fpm curl sendmail
 EXPOSE	9000
 
 COPY	./conf/www.conf /etc/php/7.3/fpm/pool.d
-COPY	./conf/index.html /var/www/index.html
 COPY	./tools /var/www
+COPY	./conf/index.html /var/www/index.html
 
 CMD	bash /var/www/script.sh

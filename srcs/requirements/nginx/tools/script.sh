@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   script.sh                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: esafar <esafar@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/09 22:20:56 by esafar            #+#    #+#             */
-/*   Updated: 2022/08/10 01:40:25 by esafar           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 # openssl
 # Utility to create a certificate
 # req
@@ -34,9 +22,9 @@
 if [ ! -f /etc/ssl/certs/nginx.crt ]; then
 	echo "Ngins: setting up ssl self certificate...";
 	openssl req -x509 -nodes -days 365 -newkey rsa:4096 \
-		-keyout /ect/ssl/private/nginx.key \
+		-keyout /etc/ssl/private/nginx.key \
 		-out /etc/ssl/certs/nginx.crt \
-		-subj "/C=RU/ST/Tatarstan/L=Kazan/O=wordpress/CN=esafar.42.fr";
+		-subj "/C=FR/ST/Paris/L=Paris/O=wordpress/CN=esafar.42.fr";
 	echo "nginx: ssl has finished setting up!";
 fi
 
