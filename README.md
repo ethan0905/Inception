@@ -17,3 +17,6 @@
 
 #### SSL self certificate command  
 https://mpolinowski.github.io/docs/DevOps/NGINX/2020-08-27--nginx-docker-ssl-certs-self-signed/2020-08-27/
+
+#### Add root privileges to user  
+https://phoenixnap.com/kb/create-a-sudo-user-on-debianhttps://phoenixnap.com/kb/create-a-sudo-user-on-debian  
