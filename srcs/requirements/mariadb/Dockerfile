@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Dockerfile                                         :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: c2h6 <esafar@student.42.fr>                +#+  +:+       +#+         #
+#    By: esafar <esafar@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/13 12:22:12 by c2h6              #+#    #+#              #
-#    Updated: 2022/09/15 10:52:18 by c2h6             ###   ########.fr        #
+#    Updated: 2022/10/21 16:26:04 by esafar           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,6 @@ EXPOSE	3306
 COPY	./conf/50-server.cnf /etc/mysql/mariadb.conf.d/
 COPY	./tools /var/www
 
-RUN	service mysql start && mysql < /var/www/createdb.sql && rm -f /var/www/createdb.sql 
+RUN     service mysql start && mysql < /var/www/createdb.sql && rm -f /var/www/createdb.sql 
 
-CMD	/usr/bin/mysqld_safe
+CMD	    /usr/bin/mysqld_safe
