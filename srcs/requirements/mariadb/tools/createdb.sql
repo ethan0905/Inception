@@ -8,4 +8,4 @@ GRANT ALL PRIVILEGES ON wordpress.* TO 'esafar'@'%';
 FLUSH PRIVILEGES;
 -- To change the authentication or database resource characteristics of a database user
 -- To allow a proxy server to connect as a client without authentication
-ALTER USER 'root'@'localhost' IDENTIFIED BY 'root1234';
+ALTER USER 'root'@'localhost' IDENTIFIED BY '1234';
