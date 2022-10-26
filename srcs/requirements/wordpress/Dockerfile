@@ -6,7 +6,7 @@
 #    By: esafar <esafar@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/13 12:22:12 by c2h6              #+#    #+#              #
-#    Updated: 2022/10/21 16:14:52 by esafar           ###   ########.fr        #
+#    Updated: 2022/10/26 10:21:49 by esafar           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,6 +18,5 @@ EXPOSE	9000
 
 COPY	./conf/www.conf /etc/php/7.3/fpm/pool.d
 COPY	./tools /var/www
-COPY	./conf/index.html /var/www/index.html
 
 CMD     bash /var/www/script.sh
